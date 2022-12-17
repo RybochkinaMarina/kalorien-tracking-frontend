@@ -24,25 +24,25 @@ export default {
   data () {
     return {
       persons: [
-        {
-          id: 1,
-          firstName: 'Max',
-          lastName: 'Mustermann',
-          vaccinated: true,
-          gender: 'MALE',
-          pets: []
-        },
-        {
-          id: 2,
-          firstName: 'Maxima',
-          lastName: 'Meier',
-          vaccinated: false,
-          gender: 'FEMALE',
-          pets: [
-            1,
-            2
-          ]
-        }
+        // {
+        //   id: 1,
+        //   firstName: 'Max',
+        //   lastName: 'Mustermann',
+        //   vaccinated: true,
+        //   gender: 'MALE',
+        //   pets: []
+        // },
+        // {
+        //   id: 2,
+        //   firstName: 'Maxima',
+        //   lastName: 'Meier',
+        //   vaccinated: false,
+        //   gender: 'FEMALE',
+        //   pets: [
+        //     1,
+        //     2
+        //   ]
+        // }
       ]
     }
   },
@@ -54,6 +54,18 @@ export default {
         return require('../assets/female.png')
       }
     }
+  },
+  mounted () {
+    // console.log('Hello World')
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    }
+
+    fetch('http://localhost:8080/api/v1/persons', requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .then(error => console.log('error', error))
   }
 }
 </script>
